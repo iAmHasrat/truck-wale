@@ -564,17 +564,13 @@ body, html {
   /* Volume: keep but slimmer */
   .glass-range { width: 55px; }
 
-  /* GitHub badge: tiny icon-only pill top-right */
-  .github-credit-badge {
-    bottom: auto;
-    top: 10px;
-    right: 10px;
-    padding: 4px 8px;
-    font-size: 0;
-    gap: 0;
+  /* GitHub badge: completely hidden on mobile */
+  .github-credit-badge { display: none !important; }
+
+  /* Fullscreen button: top-right corner on mobile */
+  .fullscreen-btn {
+    display: flex;
   }
-  .github-credit-badge span { display: none; }
-  .github-icon { width: 16px; height: 16px; opacity: 1; }
 }
 
 /* ==========================================================================
@@ -666,4 +662,33 @@ body, html {
 .github-credit-badge:hover .github-icon {
   opacity: 1;
   transform: scale(1.1);
+}
+
+/* FULLSCREEN BUTTON (mobile landscape only — hidden on desktop) */
+.fullscreen-btn {
+  display: none;           /* hidden by default on desktop */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 60;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(10, 15, 26, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.fullscreen-btn svg {
+  pointer-events: none;
 }

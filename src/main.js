@@ -170,6 +170,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  // ── Fullscreen Toggle (Mobile) ───────────────────────────────────────
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+  }
+
   // ── Keyboard shortcuts ───────────────────────────────────────────────
   window.addEventListener('keydown', (e) => {
     if (document.activeElement === ytUrlInput) return;
