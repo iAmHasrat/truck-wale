@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TruckWale • Minimal Punjabi Highway FM</title>
+    <meta name="description" content="Ultra-clean Gen Z Regal Punjabi Truck Experience & Liquid Glass Highway Player." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Rozha+One&family=Outfit:wght@300;400;500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- LAYER 1: YOUTUBE HIGHWAY DRIVE VIDEO (background, muted, looping) -->
+      <div id="yt-bg-container" class="yt-bg-container">
+        <iframe
+          id="yt-bg-iframe"
+          src="https://www.youtube.com/embed/HVksP0OjAWo?autoplay=1&mute=1&loop=1&playlist=HVksP0OjAWo&controls=0&disablekb=1&fs=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&start=4800"
+          allow="autoplay; encrypted-media"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- LAYER 2: TRANSPARENT TRUCK CABIN OVERLAY PNG (chroma-keyed, no green) -->
+      <img
+        src="/bg-overlay.png"
+        alt="Truck Cabin Overlay"
+        class="cabin-overlay-img"
+        id="cabin-overlay"
+      />
+
+      <!-- LAYER 3: MAIN UI (music player, steering horn) -->
+      <div class="cabin-viewport" id="cabin-viewport">
+
+        <!-- Hidden YouTube MUSIC Player Container (Punjabi playlist audio) -->
+        <div id="yt-player-container" class="yt-hidden"></div>
+
+        <!-- INVISIBLE STEERING HORN OVERLAY -->
+        <button class="invisible-steering-horn" id="hotspot-steering" title="Click Steering Wheel to Honk"></button>
+
+        <!-- FLOATING ULTRA-TRANSPARENT LIQUID GLASS MUSIC PLAYER BAR -->
+        <main class="liquid-player-bar" id="liquid-player">
+          <div class="player-top-row">
+            <!-- Big Track Artwork Thumbnail -->
+            <div class="disc-art-large" id="disc-art">
+              <img id="track-thumb" src="" alt="Album Art" class="track-thumb-img" />
+              <div class="disc-hole"></div>
+            </div>
+
+            <!-- Track Title & Artist Info -->
+            <div class="track-meta">
+              <div class="track-title-marquee">
+                <span id="track-title" class="marquee-text">Punjabi Highway Playlist</span>
+              </div>
+              <span id="track-artist" class="track-sub">YouTube Music</span>
+            </div>
+
+            <!-- Player Controls (Prev, Play/Pause, Next) -->
+            <div class="player-center-controls">
+              <div class="media-btn-group">
+                <button id="radio-prev-btn" class="glass-media-btn" title="Previous Track">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button id="radio-play-btn" class="glass-media-btn btn-play-circle" title="Play / Pause">
+                  <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <button id="radio-next-btn" class="glass-media-btn" title="Next Track">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Custom Playlist Button & Volume Slider -->
+            <div class="player-right-controls">
+              <button id="custom-yt-btn" class="glass-pill-btn" title="Add Custom YouTube Playlist">
+                <span>CUSTOM PLAYLIST</span>
+              </button>
+              <div class="liquid-vol-wrap">
+                <span class="vol-label">VOL</span>
+                <input type="range" id="volume-slider" min="0" max="100" value="80" class="glass-range" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Row: Track Progress Scrubber + Timestamps -->
+          <div class="player-bottom-row">
+            <span id="current-time" class="time-label">0:00</span>
+            <div class="seek-track-wrapper">
+              <input type="range" id="seek-bar" min="0" max="100" value="0" step="0.1" class="seek-range" />
+            </div>
+            <span id="total-duration" class="time-label">0:00</span>
+          </div>
+        </main>
+      </div>
+
+      <!-- CUSTOM YOUTUBE PLAYLIST MODAL -->
+      <div id="yt-modal" class="glass-modal-overlay modal-hidden">
+        <div class="glass-modal-card">
+          <div class="modal-header">
+            <h3>Add YouTube Music Playlist</h3>
+            <button id="close-yt-modal" class="btn-close">&times;</button>
+          </div>
+          <p class="modal-desc">Paste YouTube Music or YouTube Playlist / Song URL:</p>
+          <div class="modal-input-group">
+            <input type="text" id="yt-url-input" placeholder="https://music.youtube.com/playlist?list=..." class="glass-input" />
+            <button id="load-yt-url-btn" class="glass-btn-submit">LOAD</button>
+          </div>
+          <div id="yt-modal-error" class="modal-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

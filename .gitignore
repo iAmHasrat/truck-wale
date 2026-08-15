@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Utility/scratch scripts
+fetchHorn.js
+fetchHorn.py
+chroma_key.py
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Gemini/AI agent files
+.agents/
+.gemini/
+
+# Large source assets (keep processed public/ versions only)
+bgchroma.png
+"ChatGPT Image Aug 16, 2026, 01_03_42 AM.png"
+"Bus Horn Sound Download Tamil Nadu.mp3"
