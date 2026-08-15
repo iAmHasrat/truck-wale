@@ -62,7 +62,9 @@ body, html {
   /* 16:9 aspect-ratio cover sizing */
   width: max(177.78vh, 100%);
   height: max(56.25vw, 100%);
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
   pointer-events: none;
   border: none;
 }
