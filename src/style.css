@@ -361,6 +361,7 @@ body, html {
   border-radius: 9999px;
   outline: none;
   cursor: pointer;
+  touch-action: none;   /* prevent page scroll while scrubbing on mobile */
   transition: height 0.15s ease;
 }
 
@@ -487,11 +488,174 @@ body, html {
   color: #f87171;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE — Portrait & Tablet
+   ========================================================================== */
+
+/* ── Tablet (≤ 900px) ─────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .liquid-player-bar {
-    width: 94%;
-    left: 3%;
+    width: 92%;
+    left: 4%;
     max-width: 100%;
+    bottom: 18px;
+    padding: 14px 18px;
+    gap: 12px;
+  }
+
+  .disc-art-large {
+    width: 60px;
+    height: 60px;
+  }
+
+  .track-meta {
+    min-width: 100px;
+    max-width: 160px;
+  }
+
+  #track-title {
+    font-size: 0.95rem;
+  }
+
+  .glass-pill-btn span { display: none; }
+  .glass-pill-btn::after { content: '＋'; font-size: 1rem; }
+
+  .github-credit-badge {
+    bottom: auto;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* Stack the player bar into a clean 2-row card at the very bottom */
+  .liquid-player-bar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px 24px 0 0;
+    padding: 14px 16px 20px;
+    gap: 10px;
+    max-width: 100%;
+    /* slightly more opaque on mobile so it reads over the busy background */
+    background: rgba(10, 15, 26, 0.35);
+  }
+
+  /* Top row: compress into tighter flex */
+  .player-top-row {
+    gap: 10px;
+  }
+
+  /* Smaller disc on mobile */
+  .disc-art-large {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .track-meta {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
+  #track-title {
+    font-size: 0.88rem;
+  }
+
+  .track-sub {
+    font-size: 0.7rem;
+  }
+
+  /* Controls: tighter buttons */
+  .glass-media-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .btn-play-circle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .media-btn-group {
+    gap: 6px;
+  }
+
+  /* Right controls: hide text label, just show icon-like pill */
+  .player-right-controls {
+    gap: 8px;
+  }
+
+  .glass-pill-btn {
+    padding: 5px 10px;
+    font-size: 0.65rem;
+  }
+
+  .glass-pill-btn span { display: none; }
+  .glass-pill-btn::after { content: '＋'; font-size: 0.9rem; }
+
+  /* Hide volume on mobile (user can use phone hardware buttons) */
+  .liquid-vol-wrap { display: none; }
+
+  /* Progress bar: bigger touch target */
+  .seek-range {
+    height: 6px;
+  }
+
+  .seek-range::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    margin-top: -6px;
+  }
+
+  .seek-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+  }
+
+  .time-label {
+    font-size: 0.7rem;
+    width: 34px;
+  }
+
+  /* Horn button: reposition for portrait — lower center */
+  .invisible-steering-horn {
+    bottom: 120px;   /* above the player bar */
+    right: 10%;
+    width: 160px;
+    height: 160px;
+  }
+
+  /* GitHub badge: top-right, compact */
+  .github-credit-badge {
+    position: absolute;
+    bottom: auto;
+    top: 14px;
+    right: 14px;
+    padding: 5px 10px;
+    font-size: 0.65rem;
+    gap: 5px;
+  }
+
+  .github-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Truck overlay: on portrait, shift object-position to show dashboard */
+  .cabin-overlay-img {
+    object-position: center 20%;
+  }
+
+  /* YT bg: adjust bottom anchor for portrait so video is visible through windscreen */
+  #yt-bg-iframe {
+    bottom: 30%;
+    width: max(300vh, 100%);
+    height: max(56.25vw, 60%);
   }
 }
 
