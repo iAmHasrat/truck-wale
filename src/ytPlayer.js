@@ -1,7 +1,7 @@
 // Pure YouTube Music & IFrame API Player for Punjabi Truck Radio
-// Default Playlist: PLxo7u8o8MeFFqy1R8ft7x_98nI0eSRiyZ
+// Default Playlist: PLNreTuzx45cU
 
-export const DEFAULT_PLAYLIST_ID = 'PLxo7u8o8MeFFqy1R8ft7x_98nI0eSRiyZ';
+export const DEFAULT_PLAYLIST_ID = 'PLNreTuzx45cU';
 
 class YTMusicPlayerManager {
   constructor() {
